@@ -2,106 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Paluru Family - B.Tech Project Edition</title>
+    <title>Paluru Family Tree - JSON Powered</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #0b1120;
-            --line: #334155;
-            --root-grad: linear-gradient(135deg, #6366f1, #a855f7);
-            --child-grad: linear-gradient(135deg, #10b981, #059669);
-            --grand-grad: linear-gradient(135deg, #3b82f6, #2563eb);
-            --great-grad: linear-gradient(135deg, #06b6d4, #0891b2);
-            --spouse-color: #fbbf24;
-        }
-
-        body {
-            background-color: var(--bg);
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            margin: 0;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Fixed Stats Panel at Top Right */
-        .stats-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: rgba(15, 23, 42, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(251, 191, 36, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-        .stat-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            gap: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 5px;
-        }
-        .stat-item:last-child { border-bottom: none; }
-        .stat-val { font-weight: 600; font-size: 1.1rem; color: var(--spouse-color); }
-        .stat-label { font-size: 0.75rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
-
-        .controls {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 30px;
-            border-radius: 50px;
-            margin-bottom: 40px;
-            display: flex;
-            gap: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .controls label { cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-
-        /* Tree Structural Logic */
+        /* [Keep your previous CSS here - same styles apply] */
+        :root { --bg: #0b1120; --line: #334155; --root-grad: linear-gradient(135deg, #6366f1, #a855f7); --child-grad: linear-gradient(135deg, #10b981, #059669); --grand-grad: linear-gradient(135deg, #3b82f6, #2563eb); --great-grad: linear-gradient(135deg, #06b6d4, #0891b2); --spouse-color: #fbbf24; }
+        body { background-color: var(--bg); font-family: 'Poppins', sans-serif; color: white; margin: 0; padding: 40px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .stats-panel { position: fixed; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; background: rgba(15, 23, 42, 0.9); padding: 20px; border-radius: 15px; border: 1px solid rgba(251, 191, 36, 0.4); z-index: 1000; backdrop-filter: blur(10px); }
+        .stat-item { display: flex; justify-content: space-between; gap: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
+        .stat-val { font-weight: 600; color: var(--spouse-color); }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; opacity: 0.8; }
+        .controls { background: rgba(255, 255, 255, 0.05); padding: 15px 30px; border-radius: 50px; margin-bottom: 40px; display: flex; gap: 20px; border: 1px solid rgba(255,255,255,0.2); }
         .tree ul { padding-top: 25px; position: relative; display: flex; justify-content: center; }
         .tree li { text-align: center; list-style-type: none; position: relative; padding: 25px 5px 0 5px; }
-        
         .tree li::before, .tree li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid var(--line); width: 50%; height: 25px; }
         .tree li::after { right: auto; left: 50%; border-left: 2px solid var(--line); }
         .tree li:only-child::after, .tree li:only-child::before { display: none; }
-        .tree li:only-child { padding-top: 0; }
         .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
-        .tree li:last-child::before { border-right: 2px solid var(--line); border-radius: 0 5px 0 0; }
-        .tree li:first-child::after { border-radius: 5px 0 0 0; }
         .tree ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid var(--line); width: 0; height: 25px; }
-
         .member-container { display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .member {
-            width: 180px; height: 70px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border-radius: 12px; font-weight: 600; font-size: 0.85rem;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-        }
-
-        .spouse {
-            width: 140px; height: 50px;
-            border: 2px dashed var(--spouse-color);
-            border-radius: 10px; font-size: 0.7rem; color: var(--spouse-color);
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(251, 191, 36, 0.05);
-            text-align: center;
-        }
-
+        .member { width: 180px; height: 70px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 12px; font-weight: 600; font-size: 0.85rem; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .spouse { width: 140px; height: 50px; border: 2px dashed var(--spouse-color); border-radius: 10px; font-size: 0.7rem; color: var(--spouse-color); display: flex; align-items: center; justify-content: center; background: rgba(251, 191, 36, 0.05); text-align: center; }
         .root-box { background: var(--root-grad); }
         .child-box { background: var(--child-grad); }
         .grand-box { background: var(--grand-grad); }
         .great-box { background: var(--great-grad); }
         .label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 2px; }
-
         .hidden { display: none !important; }
     </style>
 </head>
@@ -109,118 +35,69 @@
 
     <h1>Paluru Family Tree</h1>
 
-    <div class="stats-panel">
-        <div class="stat-item"><span class="stat-label">Children</span><span class="stat-val" id="count-children">0</span></div>
-        <div class="stat-item"><span class="stat-label">Grandchildren</span><span class="stat-val" id="count-grand">0</span></div>
-        <div class="stat-item"><span class="stat-label">In-Laws</span><span class="stat-val" id="count-spouses">0</span></div>
-    </div>
+    <div class="stats-panel" id="stats-target">
+        </div>
 
     <div class="controls">
-        <label><input type="radio" name="view" value="main" onclick="toggleView(this.value)" checked> Family</label>
-        <label><input type="radio" name="view" value="grand" onclick="toggleView(this.value)"> Grand Children</label>
-        <label><input type="radio" name="view" value="full" onclick="toggleView(this.value)"> Complete Family</label>
+        <label><input type="radio" name="v" value="main" onclick="tv(this.value)" checked> Family</label>
+        <label><input type="radio" name="v" value="grand" onclick="tv(this.value)"> Grand Children</label>
+        <label><input type="radio" name="v" value="full" onclick="tv(this.value)"> Complete Family</label>
     </div>
 
-    <div class="tree">
-        <ul>
-            <li>
-                <div class="member-container">
-                    <div class="member root-box"><span class="label">Family Root</span>Doraswami & Padmavatamma</div>
-                </div>
-                <ul id="gen-children">
-                    <li>
-                        <div class="member-container">
-                            <div class="member child-box"><span class="label">Son (Ha)</span>Harinath Achari</div>
-                            <div class="spouse is-spouse">Wife: B. Hemalatha</div>
-                        </div>
-                        <ul class="gen-grand">
-                            <li>
-                                <div class="member-container">
-                                    <div class="member grand-box"><span class="label">Girl Child</span>Pravallika</div>
-                                    <div class="spouse is-spouse">Husband: Shankar Kiran</div>
-                                </div>
-                                <ul class="gen-great">
-                                    <li><div class="member great-box"><span class="label">Great Granddaughter</span>Baby Girl</div></li>
-                                </ul>
-                            </li>
-                            <li><div class="member-container"><div class="member grand-box">Mounika</div><div class="spouse is-spouse">Husband: Harish</div></div></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="member-container">
-                            <div class="member child-box"><span class="label">Daughter (Ng)</span>K. Nagamanemma</div>
-                            <div class="spouse is-spouse">Husband: K. Umapathi</div>
-                        </div>
-                        <ul class="gen-grand">
-                            <li>
-                                <div class="member-container">
-                                    <div class="member grand-box">Dimple</div>
-                                    <div class="spouse is-spouse">Husband: Dilli</div>
-                                </div>
-                                <ul class="gen-great">
-                                    <li><div class="member great-box"><span class="label">Great Grandson</span>Gokul</div></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="member-container">
-                            <div class="member child-box"><span class="label">Son (Pbs)</span>Subramanyam Achari</div>
-                            <div class="spouse is-spouse">Wife: P. Dhana Kumari</div>
-                        </div>
-                        <ul class="gen-grand">
-                            <li><div class="member grand-box">Mohan</div></li>
-                            <li><div class="member-container"><div class="member grand-box">Keerthi</div><div class="spouse is-spouse">Husband: Jyothi Swaroop</div></div></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="member-container">
-                            <div class="member child-box"><span class="label">Daughter (Mp)</span>Mohana Parvathi</div>
-                            <div class="spouse is-spouse">Husband: Murali</div>
-                        </div>
-                        <ul class="gen-grand">
-                            <li><div class="member grand-box">Ganesh</div></li>
-                            <li><div class="member grand-box">Mokshitha</div></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <div class="tree" id="tree-target">
+        </div>
 
     <script>
-        function toggleView(val) {
-            const grands = document.querySelectorAll('.gen-grand');
-            const greats = document.querySelectorAll('.gen-great');
-            const spouses = document.querySelectorAll('.is-spouse');
+        let familyData = {};
 
-            grands.forEach(el => el.classList.add('hidden'));
-            greats.forEach(el => el.classList.add('hidden'));
-            spouses.forEach(el => el.classList.add('hidden'));
-
-            if (val === 'grand') {
-                grands.forEach(el => el.classList.remove('hidden'));
-            } else if (val === 'full') {
-                grands.forEach(el => el.classList.remove('hidden'));
-                greats.forEach(el => el.classList.remove('hidden'));
-                spouses.forEach(el => el.classList.remove('hidden'));
-            }
-
-            updateStats(val);
+        // 1. Fetch the JSON Truth
+        async function loadTree() {
+            try {
+                const response = await fetch('family.json');
+                familyData = await response.json();
+                renderTree();
+                tv('main');
+            } catch (e) { console.error("Could not load JSON", e); }
         }
 
-        function updateStats(mode) {
-            const stats = {
-                main: { c: 4, g: 0, s: 0 },
-                grand: { c: 4, g: 7, s: 0 },
-                full: { c: 4, g: 9, s: 9 } 
-            };
-            document.getElementById('count-children').innerText = stats[mode].c;
-            document.getElementById('count-grand').innerText = stats[mode].g;
-            document.getElementById('count-spouses').innerText = stats[mode].s;
+        // 2. Build the Tree from JSON data
+        function renderTree() {
+            const target = document.getElementById('tree-target');
+            let html = `<ul><li>
+                <div class="member-container"><div class="member root-box"><span class="label">${familyData.root.label}</span>${familyData.root.name}</div></div>
+                <ul>`;
+
+            familyData.branches.forEach(child => {
+                html += `<li>
+                    <div class="member-container"><div class="member child-box"><span class="label">${child.label || ''}</span>${child.name}</div><div class="spouse is-spouse">${child.spouse}</div></div>
+                    <ul class="gen-grand">`;
+                
+                child.grandchildren.forEach(gchild => {
+                    html += `<li>
+                        <div class="member-container"><div class="member grand-box"><span class="label">${gchild.label || ''}</span>${gchild.name}</div>${gchild.spouse ? `<div class="spouse is-spouse">${gchild.spouse}</div>` : ''}</div>
+                        ${gchild.great ? `<ul class="gen-great"><li><div class="member great-box">${gchild.great}</div></li></ul>` : ''}
+                    </li>`;
+                });
+                html += `</ul></li>`;
+            });
+            html += `</ul></li></ul>`;
+            target.innerHTML = html;
         }
 
-        toggleView('main');
+        // 3. Toggle Visibility & Stats
+        function tv(val) {
+            document.querySelectorAll('.gen-grand').forEach(e => e.classList.toggle('hidden', val === 'main'));
+            document.querySelectorAll('.gen-great').forEach(e => e.classList.toggle('hidden', val !== 'full'));
+            document.querySelectorAll('.is-spouse').forEach(e => e.classList.toggle('hidden', val !== 'full'));
+            
+            const s = familyData.stats[val];
+            document.getElementById('stats-target').innerHTML = `
+                <div class="stat-item"><span class="stat-label">Children</span><span class="stat-val">${s.c}</span></div>
+                <div class="stat-item"><span class="stat-label">Grandchildren</span><span class="stat-val">${s.g}</span></div>
+                <div class="stat-item"><span class="stat-label">In-Laws</span><span class="stat-val">${s.s}</span></div>`;
+        }
+
+        window.onload = loadTree;
     </script>
 </body>
 </html>
