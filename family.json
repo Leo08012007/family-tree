@@ -17,20 +17,20 @@
       ]
     },
     {
-      "name": "K. Nagamanemma", "label": "Daughter ", "spouse": "Husband: K. Umapathi",
+      "name": "K. Nagamanemma", "label": "Elder Daughter ", "spouse": "Husband: K. Umapathi",
       "grandchildren": [
         { "name": "Dimple","label": "Grand Daughter", "spouse": "Husband: Dilli", "great": "Gokul" }
       ]
     },
     {
-      "name": "Paluru Bala Subramanyam Achari", "label": "Son", "spouse": "Wife: P. Dhana Kumari",
+      "name": "Paluru Bala Subramanyam Achari", "label": "Younger Son", "spouse": "Wife: P. Dhana Kumari",
       "grandchildren": [
         { "name": "Mohan","label": "Grand Son" },
         { "name": "Keerthi","label": "Grand Daughter","spouse": "Husband: Jyothi Swaroop" }
       ]
     },
     {
-      "name": "Mohana Parvathi", "label": "Daughter", "spouse": "Husband: Murali",
+      "name": "Mohana Parvathi", "label": "Younger Daughter", "spouse": "Husband: Murali",
       "grandchildren": [
         { "name": "Ganesh","label": "Grand Son" },
         { "name": "Mokshitha","label": "Grand Daughter" }
