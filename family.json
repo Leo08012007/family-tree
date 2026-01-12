@@ -6,34 +6,34 @@
   },
   "root": {
     "name": "Paluru Doraswami Achari & Padmavatamma",
-    "label": "Family Root"
+    "label": "Family root "
   },
   "branches": [
     {
-      "name": "Harinath Achari", "label": "Son (Ha)", "spouse": "Wife: B. Hemalatha",
+      "name": "Paluru Harinath Achari", "label": "Elder Son", "spouse": "Wife: B. Hemalatha",
       "grandchildren": [
-        { "name": "Pravallika", "label": "Girl Child", "spouse": "Husband: Shankar Kiran", "great": "Baby Girl" },
-        { "name": "Mounika", "spouse": "Husband: Harish" }
+        { "name": "Pravallika", "label": "Grand Daughter", "spouse": "Husband: Shankar Kiran", "great": "Baby Girl" },
+        { "name": "Mounika","label": "Grand Daughter", "spouse": "Husband: Harish" }
       ]
     },
     {
-      "name": "K. Nagamanemma", "label": "Daughter (Ng)", "spouse": "Husband: K. Umapathi",
+      "name": "K. Nagamanemma", "label": "Daughter ", "spouse": "Husband: K. Umapathi",
       "grandchildren": [
-        { "name": "Dimple", "spouse": "Husband: Dilli", "great": "Gokul" }
+        { "name": "Dimple","label": "Grand Daughter", "spouse": "Husband: Dilli", "great": "Gokul" }
       ]
     },
     {
-      "name": "Subramanyam Achari", "label": "Son (Pbs)", "spouse": "Wife: P. Dhana Kumari",
+      "name": "Paluru Bala Subramanyam Achari", "label": "Son", "spouse": "Wife: P. Dhana Kumari",
       "grandchildren": [
-        { "name": "Mohan" },
-        { "name": "Keerthi", "spouse": "Husband: Jyothi Swaroop" }
+        { "name": "Mohan","label": "Grand Son" },
+        { "name": "Keerthi","label": "Grand Daughter","spouse": "Husband: Jyothi Swaroop" }
       ]
     },
     {
-      "name": "Mohana Parvathi", "label": "Daughter (Mp)", "spouse": "Husband: Murali",
+      "name": "Mohana Parvathi", "label": "Daughter", "spouse": "Husband: Murali",
       "grandchildren": [
-        { "name": "Ganesh" },
-        { "name": "Mokshitha" }
+        { "name": "Ganesh","label": "Grand Son" },
+        { "name": "Mokshitha","label": "Grand Daughter" }
       ]
     }
   ]
